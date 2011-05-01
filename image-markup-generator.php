@@ -12,7 +12,7 @@ $plugin_description = gettext("Adds textfields to the image page, to allow you t
 $plugin_author = "Marcus Wong (wongm)";
 $plugin_version = '1.0.0'; 
 $plugin_URL = "http://code.google.com/p/wongm-zenphoto-plugins/";
-$option_interface = new imageMarkupOptions();
+$option_interface = 'imageMarkupOptions';
 
 /**
  * Plugin option handling class
