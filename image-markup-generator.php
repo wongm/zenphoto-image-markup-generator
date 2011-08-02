@@ -41,7 +41,7 @@ class imageMarkupOptions {
 										'desc' => gettext("What size images should be used.")),
 									gettext('Markup to be generated') => array('key' => 'imageMarkup_fields', 'type' => OPTION_TYPE_TEXTAREA,
 										'order' => 4,
-										'desc' => gettext("String that specifies the format of the markup to be generated. Multiple items are possible, semi-colon delimited. Allowable fields:<br>%IMAGE_TITLE%<br>%IMAGE_DESCRIPTION%<br>%IMAGE_PAGE_URL%<br>%IMAGE_DATE%<br>%IMAGE_THUMBNAIL_URL%<br>%IMAGE_FULLSIZE_URL%<br>%IMAGE_SIZED_URL%<br>%ALBUM_TITLE%"))
+										'desc' => gettext("String that specifies the format of the markup to be generated. Multiple items are possible, semi-colon delimited. Allowable fields:<br/>%IMAGE_TITLE%<br/>%IMAGE_DESCRIPTION%<br/>%IMAGE_PAGE_URL%<br/>%IMAGE_DATE%<br/>%IMAGE_THUMBNAIL_URL%<br/>%IMAGE_FULLSIZE_URL%<br/>%IMAGE_SIZED_URL%<br/>%ALBUM_TITLE%"))
 		);
 	}
 }
@@ -89,7 +89,7 @@ function printImageMarkupFields() {
 				$markupStringToMerge = str_replace('%IMAGE_SIZED_URL%', str_replace('%SIZE%', $size, $imagePath), $markupStringToMerge);
 				$markupStringToMerge = str_replace('%ALBUM_TITLE%', $_zp_current_image->getAlbum()->getTitle(), $markupStringToMerge);
 			
-				echo '<textarea name="markup' . $i . '" id="markup' . $i . '" cols="100" rows="2" onClick="SelectAllGeneratedMarkup(\'markup' . $i . '\')">'.$markupStringToMerge.'</textarea><br>';
+				echo '<textarea name="markup' . $i . '" id="markup' . $i . '" cols="100" rows="2" onClick="SelectAllGeneratedMarkup(\'markup' . $i . '\')">'.$markupStringToMerge.'</textarea><br/>';
 				$i++;
 			}
 		}
