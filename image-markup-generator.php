@@ -54,7 +54,6 @@ function printImageMarkupFields() {
 		
 		$path = str_replace($_zp_current_image->filename, '', $_zp_current_image->webpath);
 		$path = str_replace('albums/', '', $path);
-		$imagePath = "http://".$_SERVER['HTTP_HOST'] . $path . "image/%SIZE%/" . $_zp_current_image->filename;
 		$i = 1;
 		
 		$markupBases = split(";",getOption('imageMarkup_fields'));
@@ -84,9 +83,9 @@ function printImageMarkupFields() {
 				$markupStringToMerge = str_replace('%IMAGE_DESCRIPTION%', $_zp_current_image->getDesc(), $markupStringToMerge);
 				$markupStringToMerge = str_replace('%IMAGE_PAGE_URL%', "http://".$_SERVER['HTTP_HOST'].getImageLinkURL(), $markupStringToMerge);
 				$markupStringToMerge = str_replace('%IMAGE_DATE%', getImageDate(), $markupStringToMerge);
-				$markupStringToMerge = str_replace('%IMAGE_THUMBNAIL_URL%', str_replace('%SIZE%', getOption('thumb_size'), $imagePath), $markupStringToMerge);
-				$markupStringToMerge = str_replace('%IMAGE_FULLSIZE_URL%', "http://".$_SERVER['HTTP_HOST'].$_zp_current_image->getFullImage(), $markupStringToMerge);
-				$markupStringToMerge = str_replace('%IMAGE_SIZED_URL%', str_replace('%SIZE%', $size, $imagePath), $markupStringToMerge);
+				$markupStringToMerge = str_replace('%IMAGE_THUMBNAIL_URL%', "http://".$_SERVER['HTTP_HOST'] . $_zp_current_image->getThumb(), $markupStringToMerge);
+				$markupStringToMerge = str_replace('%IMAGE_FULLSIZE_URL%', "http://".$_SERVER['HTTP_HOST'] . $_zp_current_image->getFullImage(), $markupStringToMerge);
+				$markupStringToMerge = str_replace('%IMAGE_SIZED_URL%', "http://".$_SERVER['HTTP_HOST'] . $_zp_current_image->getSizedImage($size), $markupStringToMerge);
 				$markupStringToMerge = str_replace('%ALBUM_TITLE%', $_zp_current_image->getAlbum()->getTitle(), $markupStringToMerge);
 			
 				echo '<textarea name="markup' . $i . '" id="markup' . $i . '" cols="100" rows="2" onClick="SelectAllGeneratedMarkup(\'markup' . $i . '\')">'.$markupStringToMerge.'</textarea><br/>';
