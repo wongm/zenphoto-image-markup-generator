@@ -81,7 +81,7 @@ function printImageMarkupFields() {
 				
 				$markupStringToMerge = str_replace('%IMAGE_TITLE%', $_zp_current_image->getTitle(), $markupStringToMerge);
 				$markupStringToMerge = str_replace('%IMAGE_DESCRIPTION%', $_zp_current_image->getDesc(), $markupStringToMerge);
-				$markupStringToMerge = str_replace('%IMAGE_PAGE_URL%', "http://".$_SERVER['HTTP_HOST'].getImageLinkURL(), $markupStringToMerge);
+				$markupStringToMerge = str_replace('%IMAGE_PAGE_URL%', "http://".$_SERVER['HTTP_HOST'].getImageURL(), $markupStringToMerge);
 				$markupStringToMerge = str_replace('%IMAGE_DATE%', getImageDate(), $markupStringToMerge);
 				$markupStringToMerge = str_replace('%IMAGE_THUMBNAIL_URL%', "http://".$_SERVER['HTTP_HOST'] . $_zp_current_image->getThumb(), $markupStringToMerge);
 				$markupStringToMerge = str_replace('%IMAGE_FULLSIZE_URL%', "http://".$_SERVER['HTTP_HOST'] . $_zp_current_image->getFullImage(), $markupStringToMerge);
