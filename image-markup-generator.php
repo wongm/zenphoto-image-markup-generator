@@ -56,7 +56,10 @@ function printImageMarkupFields() {
 		$path = str_replace('albums/', '', $path);
 		$i = 1;
 		
-		$markupBases = split(";",getOption('imageMarkup_fields'));
+		$defaultSetting = getOption('imageMarkup_fields');
+		$deserialisedSetting = unserialize(getOption('imageMarkup_fields'))[en_US];
+		
+		$markupBases = split(";",$deserialisedSetting);
 ?>		<div class="generatedMarkupBoxes">
 		<script type="text/javascript">
 		function SelectAllGeneratedMarkup(id)
