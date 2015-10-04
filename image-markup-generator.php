@@ -56,16 +56,18 @@ function printImageMarkupFields() {
 		$path = str_replace('albums/', '', $path);
 		$i = 1;
 		
-		$defaultSetting = getOption('imageMarkup_fields');
-		$deserialisedSetting = unserialize(getOption('imageMarkup_fields'))[en_US];
+		$defaultSetting = unserialize(getOption('imageMarkup_fields'))[en_US];
+		if (strlen($defaultSetting) == 0) {
+			$defaultSetting = getOption('imageMarkup_fields');
+		}
 		
-		$markupBases = split(";",$deserialisedSetting);
+		$markupBases = split(";",$defaultSetting);
 ?>		<div class="generatedMarkupBoxes">
 		<script type="text/javascript">
 		function SelectAllGeneratedMarkup(id)
 		{
-    		document.getElementById(id).focus();
-    		document.getElementById(id).select();
+    			document.getElementById(id).focus();
+    			document.getElementById(id).select();
 		}
 		</script>
 <?	
