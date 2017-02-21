@@ -11,7 +11,7 @@
 $plugin_description = gettext("Adds textfields to the image page, to allow you to copy and paste image links to forums, other websites, etc.");
 $plugin_author = "Marcus Wong (wongm)";
 $plugin_version = '1.0.0'; 
-$plugin_URL = "http://code.google.com/p/wongm-zenphoto-plugins/";
+$plugin_URL = "https://github.com/wongm/zenphoto-image-markup-generator/";
 $option_interface = 'imageMarkupOptions';
 
 /**
