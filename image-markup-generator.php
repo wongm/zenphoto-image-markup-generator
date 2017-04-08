@@ -20,7 +20,7 @@ $option_interface = 'imageMarkupOptions';
  */
 class imageMarkupOptions {
 	
-	function imageMarkupOptions() {
+	function __construct() {
 		setOptionDefault('imageMarkup_fields', "%IMAGE_TITLE%\n[url=%IMAGE_PAGE_URL%][img]%IMAGE_SIZED_URL%[/img][/url]");
 		setOptionDefault('imageMarkup_permission', "admin");
 		setOptionDefault('imageMarkup_size_default', 'default');
@@ -56,18 +56,18 @@ function printImageMarkupFields() {
 		$path = str_replace('albums/', '', $path);
 		$i = 1;
 		
-		$defaultSetting = unserialize(getOption('imageMarkup_fields'))[en_US];
-		if (strlen($defaultSetting) == 0) {
-			$defaultSetting = getOption('imageMarkup_fields');
+		$setting = unserialize(getOption('imageMarkup_fields'))[en_US];
+		if (strlen($setting) == 0) {
+		    $setting = getOption('imageMarkup_fields');
 		}
 		
-		$markupBases = split(";",$defaultSetting);
+		$markupBases = explode(";", $setting);
 ?>		<div class="generatedMarkupBoxes">
 		<script type="text/javascript">
 		function SelectAllGeneratedMarkup(id)
 		{
-    			document.getElementById(id).focus();
-    			document.getElementById(id).select();
+    		document.getElementById(id).focus();
+    		document.getElementById(id).select();
 		}
 		</script>
 <?	
