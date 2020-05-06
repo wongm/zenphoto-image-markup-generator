@@ -70,7 +70,18 @@ function printImageMarkupFields() {
     		document.getElementById(id).select();
 		}
 		</script>
-<?	
+<?
+		if (isset($_SERVER['HTTPS']) &&
+			($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
+			isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
+			$_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+			$protocol = 'https://';
+		}
+		else {
+			$protocol = 'http://';
+		}
+		$domain = $protocol . $_SERVER['HTTP_HOST'];
+
 		foreach ($markupBases AS $markupStringToMerge)
 		{
 			if (strlen($markupStringToMerge) > 0)
@@ -86,11 +97,11 @@ function printImageMarkupFields() {
 				
 				$markupStringToMerge = str_replace('%IMAGE_TITLE%', $_zp_current_image->getTitle(), $markupStringToMerge);
 				$markupStringToMerge = str_replace('%IMAGE_DESCRIPTION%', $_zp_current_image->getDesc(), $markupStringToMerge);
-				$markupStringToMerge = str_replace('%IMAGE_PAGE_URL%', "http://".$_SERVER['HTTP_HOST'].getImageURL(), $markupStringToMerge);
+				$markupStringToMerge = str_replace('%IMAGE_PAGE_URL%', $domain . getImageURL(), $markupStringToMerge);
 				$markupStringToMerge = str_replace('%IMAGE_DATE%', getImageDate(), $markupStringToMerge);
-				$markupStringToMerge = str_replace('%IMAGE_THUMBNAIL_URL%', "http://".$_SERVER['HTTP_HOST'] . $_zp_current_image->getThumb(), $markupStringToMerge);
-				$markupStringToMerge = str_replace('%IMAGE_FULLSIZE_URL%', "http://".$_SERVER['HTTP_HOST'] . $_zp_current_image->getFullImage(), $markupStringToMerge);
-				$markupStringToMerge = str_replace('%IMAGE_SIZED_URL%', "http://".$_SERVER['HTTP_HOST'] . $_zp_current_image->getSizedImage($size), $markupStringToMerge);
+				$markupStringToMerge = str_replace('%IMAGE_THUMBNAIL_URL%', $domain . $_zp_current_image->getThumb(), $markupStringToMerge);
+				$markupStringToMerge = str_replace('%IMAGE_FULLSIZE_URL%', $domain . $_zp_current_image->getFullImage(), $markupStringToMerge);
+				$markupStringToMerge = str_replace('%IMAGE_SIZED_URL%', $domain . $_zp_current_image->getSizedImage($size), $markupStringToMerge);
 				$markupStringToMerge = str_replace('%ALBUM_TITLE%', $_zp_current_image->getAlbum()->getTitle(), $markupStringToMerge);
 			
 				echo '<textarea name="markup' . $i . '" id="markup' . $i . '" cols="100" rows="2" onClick="SelectAllGeneratedMarkup(\'markup' . $i . '\')">'.$markupStringToMerge.'</textarea><br/>';
