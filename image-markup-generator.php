@@ -70,7 +70,7 @@ function printImageMarkupFields() {
     		document.getElementById(id).select();
 		}
 		</script>
-<?
+<?php
 		if (isset($_SERVER['HTTPS']) &&
 			($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
 			isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
@@ -97,7 +97,7 @@ function printImageMarkupFields() {
 				
 				$markupStringToMerge = str_replace('%IMAGE_TITLE%', $_zp_current_image->getTitle(), $markupStringToMerge);
 				$markupStringToMerge = str_replace('%IMAGE_DESCRIPTION%', $_zp_current_image->getDesc(), $markupStringToMerge);
-				$markupStringToMerge = str_replace('%IMAGE_PAGE_URL%', $domain . getImageURL(), $markupStringToMerge);
+				$markupStringToMerge = str_replace('%IMAGE_PAGE_URL%', $domain.getImageURL(), $markupStringToMerge);
 				$markupStringToMerge = str_replace('%IMAGE_DATE%', getImageDate(), $markupStringToMerge);
 				$markupStringToMerge = str_replace('%IMAGE_THUMBNAIL_URL%', $domain . $_zp_current_image->getThumb(), $markupStringToMerge);
 				$markupStringToMerge = str_replace('%IMAGE_FULLSIZE_URL%', $domain . $_zp_current_image->getFullImage(), $markupStringToMerge);
