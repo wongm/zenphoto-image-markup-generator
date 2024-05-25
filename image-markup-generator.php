@@ -56,7 +56,7 @@ function printImageMarkupFields() {
 		$path = str_replace('albums/', '', $path);
 		$i = 1;
 		
-		$setting = unserialize(getOption('imageMarkup_fields'))['en_US'];
+		$setting = unserialize(getOption('imageMarkup_fields'))["en_US"];
 		if (strlen($setting) == 0) {
 		    $setting = getOption('imageMarkup_fields');
 		}
